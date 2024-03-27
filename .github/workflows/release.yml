@@ -2,8 +2,11 @@ name: Deploy to GitHub Releases
 
 on:
   push:
-    branches:
-      - main  # or any branch you prefer
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
 
 jobs:
   build-and-release:
@@ -11,8 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    # Add any build steps here if necessary
 
     - name: Run Build
       run: make build  # Assumes you have a Makefile with a 'build' target
