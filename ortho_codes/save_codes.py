@@ -3,7 +3,7 @@
 import json
 import csv
 from pathlib import Path
-from codes import NAMESPACE, Codes
+from ortho_codes.snomed import NAMESPACES, Codes
 
 build_path = Path('.', 'build')
 

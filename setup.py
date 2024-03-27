@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='open-ortho-codes',  # Package name, should be unique on PyPI
-    version='0.1.0',  # Package version
+    version='0.2.0',  # Package version
     author='Toni Magni',  # Your name or your organization's name
     author_email='open-ortho@case.edu',  # Your contact email
     description='A package for managing orthodontic codes and namespaces.',  # Short description
@@ -20,6 +20,9 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
     keywords='orthodontics codes fhir healthcare snomed',  # Keywords to make your project more discoverable
     install_requires=[],
