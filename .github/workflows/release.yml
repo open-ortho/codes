@@ -1,0 +1,41 @@
+name: Deploy to GitHub Releases
+
+on:
+  push:
+    branches:
+      - main  # or any branch you prefer
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Add any build steps here if necessary
+
+    - name: Run Build
+      run: make build  # Assumes you have a Makefile with a 'build' target
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Assets
+      run: |
+        for filename in dist/*; do
+          echo "Uploading ${filename}"
+          asset_path=${filename}
+          asset_name=$(basename ${filename})
+          asset_url=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${{ steps.create_release.outputs.upload_url }}?name=${asset_name}" | jq -r .browser_download_url)
+          echo "Uploaded ${asset_name} to ${asset_url}"
+        done
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
