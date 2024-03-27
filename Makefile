@@ -1,3 +1,5 @@
+NAME = ortho_codes
+
 .PHONY: clean deploy
 
 dist:
@@ -5,7 +7,7 @@ dist:
 
 build:
 	mkdir -p build
-	python3 ./python/save_codes.py
+	python3 -m $(NAME).save_codes
 
 deploy: dist
 	twine upload dist/*
