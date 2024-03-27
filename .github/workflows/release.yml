@@ -8,37 +8,42 @@ on:
       - 'v*'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Run Build
       run: make build  # Assumes you have a Makefile with a 'build' target
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
+    - name: Create and Upload Release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-
-    - name: Upload Release Assets
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_REF_NAME: ${{ github.ref_name }}
       run: |
+        # Create a release
+        RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d '{"tag_name":"'"$GITHUB_REF_NAME"'", "name":"Release '"$GITHUB_REF_NAME"'", "draft":false, "prerelease":false}' "https://api.github.com/repos/$GITHUB_REPOSITORY/releases")
+
+        # Extract the upload URL from the response
+        UPLOAD_URL=$(echo $RESPONSE | jq -r .upload_url | sed 's/{?name,label}//')
+
+        # Loop through and upload each asset in the dist/ directory
         for filename in dist/*; do
           echo "Uploading ${filename}"
           asset_path=${filename}
           asset_name=$(basename ${filename})
-          asset_url=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${{ steps.create_release.outputs.upload_url }}?name=${asset_name}" | jq -r .browser_download_url)
-          echo "Uploaded ${asset_name} to ${asset_url}"
+          
+          # Upload asset
+          HTTP_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${UPLOAD_URL}?name=${asset_name}")
+
+          if [ "$HTTP_RESPONSE" -eq "201" ]; then
+            echo "Successfully uploaded ${asset_name}"
+          else
+            echo "Failed to upload ${asset_name} with HTTP response $HTTP_RESPONSE"
+          fi
         done
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
