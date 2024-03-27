@@ -3,42 +3,42 @@
 Used whenever a code is necessary, for various implementations.
 
 """
-from . import _Code
+from . import Code
 
 class NAMESPACES:
     snomedct = "http://snomed.info/sct"
 
-dental_chair = _Code(
+dental_chair = Code(
     system=NAMESPACES.snomedct,
     code='706356006',
     display='Dental examination/treatment chair')
 
-orthod_treatment_perm_class1 = _Code(
+orthod_treatment_perm_class1 = Code(
     system=NAMESPACES.snomedct,
     code='3891000',
     display='Comprehensive orthodontic treatment, permanent dentition, for class I malocclusion')
 
-ortho_treatment = _Code(
+ortho_treatment = Code(
     system=NAMESPACES.snomedct,
     code='122452007',
     display='Comprehensive orthodontic treatment')
 
-orthodontist = _Code(
+orthodontist = Code(
     system=NAMESPACES.snomedct,
     code='37504001',
     display='Orthodontist')
 
-clinical_staff = _Code(
+clinical_staff = Code(
     system=NAMESPACES.snomedct,
     code='4162009',
     display='Dental assistant')
 
-admin_staff = _Code(
+admin_staff = Code(
     system=NAMESPACES.snomedct,
     code='224608005',
     display='Administrative healthcare staff')
 
-tech_support = _Code(
+tech_support = Code(
     system=NAMESPACES.snomedct,
     code='159324001',
     display='Technical assistant')

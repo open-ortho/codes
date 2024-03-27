@@ -1,4 +1,4 @@
-class _Code:
+class Code:
     def __init__(self, system, code, display):
         self.system = system
         self.code = code

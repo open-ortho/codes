@@ -2,7 +2,7 @@
 
 Used whenever a code is necessary, for various implementations.
 """
-from . import _Code
+from . import Code
 
 class NAMESPACES:
     fhir_root =  "http://hl7.org/fhir"
@@ -34,97 +34,97 @@ class NAMESPACES:
     Encounter = f"{fhir_structured_definition}/Encounter"
 
 
-bed = _Code(
+bed = Code(
     system=NAMESPACES.LocationType,
     code='bd',
     display='Bed')
 """ Used for Chairs """
 
-enterer = _Code(
+enterer = Code(
     system=NAMESPACES.ProvenanceParticipantType,
     code='enterer',
     display='Enterer')
 """ Used for appointing_staff_member in Appointments. """
 
-originate = _Code(
+originate = Code(
     system=NAMESPACES.Iso_21089_2017_Health_Record_Lifecycle_Events,
     code='originate',
     display='Originate/Retain Record Lifecycle Event')
 """ Used for appointing_staff_member. """
 
-amend = _Code(
+amend = Code(
     system=NAMESPACES.Iso_21089_2017_Health_Record_Lifecycle_Events,
     code='amend',
     display='Amend (Update) Record Lifecycle Event')
 """ Used for appointing_staff_member. """
 
-IMP = _Code(
+inpatient_encounter = Code(
     system=NAMESPACES.EncounterClass,
     code='IMP',
     display='inpatient encounter')
 """ Used for Encounter Class. """
 
-HH = _Code(
+home_health = Code(
     system=NAMESPACES.EncounterClass,
     code='HH',
     display='home health')
 """ Used for Encounter Class. """
 
-VR = _Code(
+virtual = Code(
     system=NAMESPACES.EncounterClass,
     code='VR',
     display='virtual')
 """ Used for Encounter Class. """
 
-RV = _Code(
+reason_for_visit = Code(
     system=NAMESPACES.EncounterReasonUse,
     code='RV',
     display='Reason for Visit')
 """ Usesd for Encounter Reason Use. """
 
-ADM = _Code(
+admitter = Code(
     system=NAMESPACES.ParticipationType,
     code='ADM',
     display='admitter')
 """ Usesd for seating_staff. """
 
-ATND = _Code(
+attender = Code(
     system=NAMESPACES.ParticipationType,
     code='ATND',
     display='attender')
 """ Usesd for orthodontist_id. """
 
-prov = _Code(
+prov = Code(
     system=NAMESPACES.AppointmentCancellationReason,
     code='prov',
     display='Provider')
 """ Used for cancellation_reason. """
 
-pat = _Code(
+pat = Code(
     system=NAMESPACES.AppointmentCancellationReason,
     code='pat',
     display='Patient')
 """ Used for cancellation_reason. """
 
-Dental = _Code(
+dental = Code(
     system=NAMESPACES.ServiceCategory,
     code='10',
     display='Dental')
 """ Used for appointment service category. """
 
-orthodontic = _Code(
+orthodontic = Code(
     system=NAMESPACES.ServiceType,
     code='91',
     display='Orthodontic')
 """ Used for appointment service type. """
 
-general_dental = _Code(
+general_dental = Code(
     system=NAMESPACES.ServiceType,
     code='88',
     display='General Dental')
 """ Used for appointment service type. """
 
-endodontic = _Code(
+endodontic = Code(
     system=NAMESPACES.ServiceType,
     code='87',
     display='Endodontic')
