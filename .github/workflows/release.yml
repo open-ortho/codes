@@ -43,9 +43,11 @@ jobs:
 
           if [ "$HTTP_RESPONSE" -eq "201" ]; then
             echo "Successfully uploaded ${asset_name}"
+            rm response.txt  # Clean up the response file
           else
             echo "Failed to upload ${asset_name} with HTTP response $HTTP_RESPONSE"
             echo "Response: $(cat response.txt)"
+            rm response.txt  # Clean up the response file
+            exit 1
           fi
-          rm response.txt  # Clean up the response file
         done
