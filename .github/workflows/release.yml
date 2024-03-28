@@ -34,12 +34,13 @@ jobs:
 
         # Loop through and upload each asset in the dist/ directory
         for filename in build/*; do
-          echo "Uploading ${filename}"
           asset_path=${filename}
           asset_name=$(basename ${filename})
+          FULL_UPLOAD_URL="${UPLOAD_URL}?name=${asset_name}"
+          echo "Uploading ${filename} to ${FULL_UPLOAD_URL}"
           
           # Upload asset
-          HTTP_RESPONSE=$(curl -s -o response.txt -w "%{http_code}" -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${UPLOAD_URL}?name=${asset_name}")
+          HTTP_RESPONSE=$(curl -s -o response.txt -w "%{http_code}" -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${FULL_UPLOAD_URL}")
 
           if [ "$HTTP_RESPONSE" -eq "201" ]; then
             echo "Successfully uploaded ${asset_name}"
