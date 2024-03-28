@@ -28,9 +28,11 @@ jobs:
       run: |
         # Create a release
         RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d '{"tag_name":"'"$GITHUB_REF_NAME"'", "name":"Release '"$GITHUB_REF_NAME"'", "draft":false, "prerelease":false}' "https://api.github.com/repos/$GITHUB_REPOSITORY/releases")
+        printf "RESPONSE=%s\n" "${RESPONSE}"
 
         # Extract the upload URL from the response
         UPLOAD_URL=$(echo $RESPONSE | jq -r .upload_url | sed 's/{?name,label}//')
+        printf "UPLOAD_URL=%s\n" "${UPLOAD_URL}"
 
         # Loop through and upload each asset in the dist/ directory
         for filename in build/*; do
