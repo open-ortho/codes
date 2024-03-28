@@ -33,17 +33,19 @@ jobs:
         UPLOAD_URL=$(echo $RESPONSE | jq -r .upload_url | sed 's/{?name,label}//')
 
         # Loop through and upload each asset in the dist/ directory
-        for filename in dist/*; do
+        for filename in build/*; do
           echo "Uploading ${filename}"
           asset_path=${filename}
           asset_name=$(basename ${filename})
           
           # Upload asset
-          HTTP_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${UPLOAD_URL}?name=${asset_name}")
+          HTTP_RESPONSE=$(curl -s -o response.txt -w "%{http_code}" -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"${asset_path}" "${UPLOAD_URL}?name=${asset_name}")
 
           if [ "$HTTP_RESPONSE" -eq "201" ]; then
             echo "Successfully uploaded ${asset_name}"
           else
             echo "Failed to upload ${asset_name} with HTTP response $HTTP_RESPONSE"
+            echo "Response: $(cat response.txt)"
           fi
+          rm response.txt  # Clean up the response file
         done
