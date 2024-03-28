@@ -26,7 +26,7 @@ jobs:
         GITHUB_REPOSITORY: ${{ github.repository }}
         GITHUB_REF_NAME: ${{ github.ref_name }}
       run: |
-        # Create a release
+        printf "Create a release with tag_name: [%s]\n" "${GITHUB_REF_NAME}"
         RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d '{"tag_name":"'"$GITHUB_REF_NAME"'", "name":"Release '"$GITHUB_REF_NAME"'", "draft":false, "prerelease":false}' "https://api.github.com/repos/$GITHUB_REPOSITORY/releases")
         printf "RESPONSE=%s\n" "${RESPONSE}"
 
