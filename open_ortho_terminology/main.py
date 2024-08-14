@@ -36,8 +36,13 @@ def module_to_dict(module):
              if isinstance(getattr(module, name), Code)}
 
     # Convert Code instances to dictionaries for JSON and CSV
-    return {name: {'system': code.system, 'code': code.code, 'display': code.display}
-            for name, code in Codes.items()}
+    return {
+        name: {
+            'system': code.system,
+            'code': code.code,
+            'full_code': code.full_code,
+            'display': code.display
+        } for name, code in Codes.items()}
 
 
 if __name__ == "__main__":

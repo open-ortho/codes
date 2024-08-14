@@ -11,10 +11,9 @@ SYSTEM = "http://snomed.info/sct"
 class CodeSnomed(Code):
 
     def __init__(self,**kwargs):
+        super().__init__(**kwargs)
         self.prefix = PREFIX
         self.system = SYSTEM
-        self.code = kwargs.get('code')
-        self.display = kwargs.get('display')
 
 dental_chair = CodeSnomed(
     code='706356006',
