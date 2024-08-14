@@ -31,7 +31,7 @@ setup(
     # package_data={'yourpackage': ['data/*.dat']},  # Include specific package data
     entry_points={  # Allows you to create command-line scripts
         'console_scripts': [
-            'oo-codes=ortho_codes.save_codes:main', 
+            'oo-codes=ortho_codes.main:main', 
         ],
     },
 )

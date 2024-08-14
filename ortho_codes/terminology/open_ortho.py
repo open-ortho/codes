@@ -3,6 +3,7 @@
 Used whenever a code is necessary, for various implementations.
 """
 from . import Code
+PREFIX = 'OPOR'
 
 def make_code(s):
     """
@@ -19,7 +20,7 @@ def make_code(s):
 
 class NAMESPACES:
     root_uid = "1.3.6.1.4.1.61741.11.3"
-    url =  "http://open-ortho.org/codes"
+    url =  "http://open-ortho.org/terminology"
 
 IV01 = Code(
     system=NAMESPACES.url,
@@ -27,3 +28,4 @@ IV01 = Code(
     display='Intraoral Right Buccal Segment, Centric Occlusion, Direct View',
     synonyms=[''])
 """ Used for ... """
+

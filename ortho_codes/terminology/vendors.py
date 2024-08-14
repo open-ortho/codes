@@ -4,4 +4,4 @@
 
 class NAMESPACES:
     topsortho = "http://topsortho.com/topsdb"
-    open_ortho = "http://open-ortho.org/codes"
+    open_ortho = "http://open-ortho.org/terminology"

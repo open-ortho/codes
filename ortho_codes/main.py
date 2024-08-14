@@ -9,20 +9,27 @@ When adding new modules:
 import json
 import csv
 from pathlib import Path
-from . import Code, snomed, hl7, vendors
+
+from ortho_codes.terminology import hl7, open_ortho, snomed, vendors
+from ortho_codes.terminology import Code
+
 
 build_path = Path('.', 'build')
+
 
 def save_to_json(data, filename):
     with open(filename, 'w') as f:
         json.dump(data, f, indent=4)
+
 
 def save_to_csv(data, filename):
     with open(filename, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Key', 'System', 'Code', 'Display'])
         for key, value in data.items():
-            writer.writerow([key, value['system'], value['code'], value['display']])
+            writer.writerow(
+                [key, value['system'], value['code'], value['display']])
+
 
 def module_to_dict(module):
     Codes = {name: getattr(module, name) for name in dir(module)
@@ -30,11 +37,11 @@ def module_to_dict(module):
 
     # Convert Code instances to dictionaries for JSON and CSV
     return {name: {'system': code.system, 'code': code.code, 'display': code.display}
-                  for name, code in Codes.items()}
+            for name, code in Codes.items()}
 
 
 if __name__ == "__main__":
-    for module in (snomed, hl7, vendors):
+    for module in (snomed, hl7, vendors, open_ortho):
         dict_module = module_to_dict(module)
         save_to_json(dict_module, build_path / f'{module.__name__}.json')
         save_to_csv(dict_module, build_path / f'{module.__name__}.csv')

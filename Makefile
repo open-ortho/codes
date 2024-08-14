@@ -7,7 +7,7 @@ dist:
 
 build:
 	mkdir -p build
-	python3 -m $(NAME).save_codes
+	python3 -m $(NAME).main
 
 deploy: dist
 	twine upload dist/*
