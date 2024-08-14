@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='open-ortho-codes',  # Package name, should be unique on PyPI
-    version='0.2.0',  # Package version
+    name='open-ortho-terminology',  # Package name, should be unique on PyPI
+    version='0.3.0',  # Package version
     author='Toni Magni',  # Your name or your organization's name
     author_email='open-ortho@case.edu',  # Your contact email
     description='A package for managing orthodontic codes and namespaces.',  # Short description
@@ -31,7 +31,7 @@ setup(
     # package_data={'yourpackage': ['data/*.dat']},  # Include specific package data
     entry_points={  # Allows you to create command-line scripts
         'console_scripts': [
-            'oo-codes=ortho_codes.main:main', 
+            'oo-codes=open_ortho_terminology.main:main', 
         ],
     },
 )

@@ -1,4 +1,4 @@
-NAME = ortho_codes
+NAME = open_ortho_terminology
 
 .PHONY: clean deploy
 

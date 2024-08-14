@@ -10,8 +10,8 @@ import json
 import csv
 from pathlib import Path
 
-from ortho_codes.terminology import hl7, open_ortho, snomed, vendors
-from ortho_codes.terminology import Code
+from open_ortho_terminology.terminology import hl7, open_ortho, snomed, vendors
+from open_ortho_terminology.terminology import Code
 
 
 build_path = Path('.', 'build')
