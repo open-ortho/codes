@@ -41,7 +41,8 @@ def module_to_dict(module):
             'system': code.system,
             'code': code.code,
             'full_code': code.full_code,
-            'display': code.display
+            'display': code.display,
+            'synonyms': code.synonyms
         } for name, code in Codes.items()}
 
 

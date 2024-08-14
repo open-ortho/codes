@@ -32,6 +32,8 @@
 
 This project serves as a centralized repository for orthodontic software developers, offering a curated collection of essential codes required for implementing healthcare standards like DICOM or HL7. Navigating through various terminologies to find the right codes can be challenging. Our project aims to simplify this process by providing a go-to source for these codes, readily available in JSON and CSV formats. Users can access these directly through GitHub releases or utilize them as a Python package on PyPI.
 
+In addition, the repository can define its own codes in situations where the absence of specific codes in standardized nomenclatures and code sets impedes the development process. Codes generated here are temporary; as the inclusion process progresses, these codes may be replaced. Once officially approved by authoritative sources like HL7 or SNOMED, the terminology server will be updated accordingly, rendering these temporary codes obsolete and mapping them as synonyms to the newly approved codes.
+
 ## Using The Codes
 
 ### Python
@@ -42,7 +44,7 @@ If you want to use the codes directly in your Python project:
 
 Then
 
-    from open_ortho_terminology import hl7 as codes_hl7
+    from open_ortho_terminology.terminology import hl7 as codes_hl7
 
     print(f"{codes_hl7.orthodontic.system}")
     print(codes_hl7.orthodontic.code)
@@ -50,7 +52,7 @@ Then
 
 Convert codes to JSON
 
-    from open_ortho_terminology import hl7 as codes_hl7
+    from open_ortho_terminology.terminology import hl7 as codes_hl7
 
     print(f"{codes_hl7.orthodontic.to_json()}")
 
