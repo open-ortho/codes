@@ -13,7 +13,7 @@ from pathlib import Path
 from fhir.resources.bundle import Bundle, BundleEntry
 from fhir.resources.coding import Coding
 
-from open_ortho_terminology.terminology import hl7, open_ortho, snomed, vendors, snomed_fhir
+from open_ortho_terminology.terminology import hl7, open_ortho, snomed, vendors
 from open_ortho_terminology.terminology import Code
 
 import logging

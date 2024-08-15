@@ -8,6 +8,8 @@ class Code:
         self.code = kwargs.get('code')
         self.display = kwargs.get('display')
         self.synonyms = kwargs.get('synonyms')
+        self.compose = kwargs.get('compose')
+        self.expansion = kwargs.get('expansion')
 
     def to_json(self):
         return json.dumps({
