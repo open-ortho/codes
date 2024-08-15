@@ -2,6 +2,8 @@
 
 Used whenever a code is necessary, for various implementations.
 """
+from fhir.resources.coding import Coding
+
 from open_ortho_terminology.terminology import Code
 from open_ortho_terminology.terminology.snomed import EV01, EV15, EV19
 PREFIX = 'OPOR'
@@ -244,5 +246,6 @@ VS01 = OpenOrthoCode(
     code=f"{make_code('VS01')}",
     display='ViewSet 01',
     synonyms=['VS-01', 'ABO'],
-    views=[[EV01], [EV15], [EV19], [IV25], [None], [IV27], [IV01,IV03],[IV07],[IV18,IV20]]
+    views=[[EV01], [EV15], [EV19], [IV25], [None],
+           [IV27], [IV01, IV03], [IV07], [IV18, IV20]]
 )

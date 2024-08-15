@@ -1,4 +1,5 @@
 import json
+from fhir.resources.coding import Coding
 
 class Code:
     def __init__(self, **kwargs):
@@ -17,7 +18,19 @@ class Code:
             'synonyms': self.synonyms
         }, indent=4)
 
+    def to_fhir(self) -> Coding:
+        return Coding(
+            system=self.system,
+            code=self.full_code,
+            display=self.display
+        )
+
+
     @property
     def full_code(self):
         """ The code with the prefix. E.g. 'OPOR-3412' """
-        return f"{self.prefix}-{self.code}"
+        if self.prefix:
+            return f"{self.prefix}-{self.code}"
+        else:
+            return self.code
+        
