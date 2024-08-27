@@ -2,16 +2,10 @@
 
 Used whenever a code is necessary, for various implementations.
 """
-from fhir.resources.coding import Coding
 
 from open_ortho_terminology.terminology import Code
 from open_ortho_terminology.terminology.snomed import EV01, EV15, EV19
-PREFIX = 'OPOR'
-
-
-class NAMESPACES:
-    root_uid = "1.3.6.1.4.1.61741.11.3"
-    url = "http://open-ortho.org/terminology"
+from open_ortho_terminology.terminology.vendors import OpenOrtho
 
 
 def make_code(s):
@@ -32,8 +26,8 @@ class OpenOrthoCode(Code):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.prefix = PREFIX
-        self.system = NAMESPACES.url
+        self.prefix = OpenOrtho.PREFIX
+        self.system = OpenOrtho.url
 
 
 EV07 = OpenOrthoCode(
@@ -51,7 +45,7 @@ EV28 = OpenOrthoCode(
 IV01 = OpenOrthoCode(
     code=f"{make_code('IV01')}",
     display='Intraoral Right Buccal Segment, Centric Occlusion, Direct View',
-    synonyms=['IV-01', 'IO.RB.CO'])
+    synonyms=['IV-01', 'IO.RB.CO', 'DEYE-brr'])
 """ Used for ... """
 
 IV02 = OpenOrthoCode(
@@ -87,7 +81,7 @@ IV06 = OpenOrthoCode(
 IV07 = OpenOrthoCode(
     code=f"{make_code('IV07')}",
     display='Intraoral, Frontal View, Centric Occlusion',
-    synonyms=['IV-07', 'IO.FV.CO'])
+    synonyms=['IV-07', 'IO.FV.CO','DEYE-frc'])
 """ Used for ... """
 
 IV08 = OpenOrthoCode(
@@ -99,7 +93,7 @@ IV08 = OpenOrthoCode(
 IV09 = OpenOrthoCode(
     code=f"{make_code('IV09')}",
     display='Intraoral, Frontal View, Teeth Apart',
-    synonyms=['IV-09', 'IO.FV.TA'])
+    synonyms=['IV-09', 'IO.FV.TA','DEYE-frg'])
 """ Used for ... """
 
 IV10 = OpenOrthoCode(

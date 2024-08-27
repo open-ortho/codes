@@ -13,7 +13,7 @@ from pathlib import Path
 from fhir.resources.bundle import Bundle, BundleEntry
 from fhir.resources.coding import Coding
 
-from open_ortho_terminology.terminology import hl7, open_ortho, snomed, vendors
+from open_ortho_terminology.terminology import hl7, open_ortho, snomed, dentaleyepad, vendors
 from open_ortho_terminology.terminology import Code
 
 import logging
@@ -75,7 +75,7 @@ def module_to_dict(module):
 
 
 if __name__ == "__main__":
-    for module in (snomed, hl7, vendors, open_ortho):
+    for module in (snomed, hl7, vendors, open_ortho, dentaleyepad):
         dict_module = module_to_dict(module)
         save_to_fhir(module, build_path / f'{module.__name__}_fhir.json')
         save_to_json(dict_module, build_path / f'{module.__name__}.json')

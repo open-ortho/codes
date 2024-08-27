@@ -59,7 +59,7 @@ EV02 = SnomedCode(
 EV03 = SnomedCode(
     code='1306621003',
     display="Photographic extraoral image of right half of face with lips closed and teeth in centric occlusion (record artifact)",
-    synonyms=['EV-03', 'EO.RP.LC.CO'])
+    synonyms=['EV-03', 'EO.RP.LC.CO','po1'])
 
 EV04 = SnomedCode(
     code='1306620002',
@@ -69,7 +69,7 @@ EV04 = SnomedCode(
 EV05 = SnomedCode(
     code='1306628009',
     display="Photographic extraoral image of right half of face with full smile and teeth in centric occlusion (record artifact)",
-    synonyms=['EV-05', 'EO.RP.FS.CO'])
+    synonyms=['EV-05', 'EO.RP.FS.CO', 'prs'])
 
 EV06 = SnomedCode(
     code='1306626008',
@@ -124,7 +124,7 @@ EV16 = SnomedCode(
 EV17 = SnomedCode(
     code='1306624006',
     display="Photographic extraoral image of full face with lips closed and teeth in centric occlusion (record artifact)",
-    synonyms=['EV-17', 'EO.FF.LC.CO'])
+    synonyms=['EV-17', 'EO.FF.LC.CO','pfr'])
 
 EV18 = SnomedCode(
     code='1306662009',
@@ -134,7 +134,7 @@ EV18 = SnomedCode(
 EV19 = SnomedCode(
     code='1306664005',
     display="Photographic extraoral image of full face with full smile and teeth in centric occlusion (record artifact)",
-    synonyms=['EV-19', 'EO.FF.FS.CO'])
+    synonyms=['EV-19', 'EO.FF.FS.CO', 'pfs'])
 
 EV20 = SnomedCode(
     code='1306665006',
