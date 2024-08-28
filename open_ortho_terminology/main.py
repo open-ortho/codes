@@ -11,7 +11,6 @@ import csv
 from pathlib import Path
 
 from fhir.resources.bundle import Bundle, BundleEntry
-from fhir.resources.coding import Coding
 
 from open_ortho_terminology.terminology import hl7, open_ortho, snomed, dentaleyepad, vendors
 from open_ortho_terminology.terminology import Code

@@ -2,12 +2,12 @@ NAME = open_ortho_terminology
 
 .PHONY: clean deploy
 
-dist:
-	python3 ./setup.py sdist bdist_wheel
-
 build:
 	mkdir -p build
 	python3 -m $(NAME).main
+
+dist:
+	python3 ./setup.py sdist bdist_wheel
 
 deploy: dist
 	twine upload dist/*
