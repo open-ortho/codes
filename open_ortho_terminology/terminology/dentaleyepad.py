@@ -17,7 +17,7 @@ class DentaleyepadCode(Code):
         super().__init__(**kwargs)
         self.prefix = DentalEyePad.PREFIX
         self.system = DentalEyePad.url
-
+        self.contexts = [{'standard': 'DICOM', 'resource': 'ScheduledProtocol'}]
 
 sf0 = DentaleyepadCode(
     code=f"{make_code('sf0')}",
@@ -402,4 +402,3 @@ mbs = DentaleyepadCode(
     display='model back side',
     synonyms=['mbs', 'model back side'])
 """ Modell Rückseite """
-
