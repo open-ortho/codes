@@ -69,7 +69,8 @@ def module_to_dict(module):
                 'code': code.code,
                 'full_code': code.full_code,
                 'display': code.display,
-                'synonyms': code.synonyms
+                'synonyms': code.synonyms,
+                'contexts': code.contexts
             } for name, code in Codes.items()}
 
 

@@ -2,6 +2,16 @@ import json
 from fhir.resources.coding import Coding
 
 class Code:
+    """ A terminology code.
+    
+    expansion: This refers to the process of expanding a value set, which means fully enumerating the set of codes that it contains. This is done to ensure that a value set is clearly and comprehensively defined, making it useful for validation, selection, and display. The term comes from FHIR.
+
+    compose: This term is used within the definition of a value set, where the "compose" element specifies the set of codes that are included or excluded from the value set based on filters and value set inclusions. The term comes from FHIR.
+
+    contexts: defines which resource of which standard these codes are used for. a list of dicts() containing the keys: 'standard' and 'resource'
+    
+    """
+
     def __init__(self, **kwargs):
         self.prefix = None
         self.system = kwargs.get('system')
@@ -10,6 +20,7 @@ class Code:
         self.synonyms = kwargs.get('synonyms')
         self.compose = kwargs.get('compose')
         self.expansion = kwargs.get('expansion')
+        self.contexts = kwargs.get('contexts')
 
     def to_json(self):
         return json.dumps({
