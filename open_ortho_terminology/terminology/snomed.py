@@ -244,3 +244,9 @@ EV35 = SnomedCode(
     display="Photographic extraoral image of 45 degree view of left half of face with mandible postured forward (record artifact)",
     contexts=[{'standard': 'DICOM', 'resource': 'ScheduledProtocol'}],
     synonyms=['EV-35', 'EO.LP.MD.PF.45'])
+
+EV36 = SnomedCode(
+    code='1306653007',
+    display="Photographic extraoral image of inferior view of face (record artifact)",
+    contexts=[{'standard': 'DICOM', 'resource': 'ScheduledProtocol'}],
+    synonyms=['EV-36', 'EO.OF.IV'])
