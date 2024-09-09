@@ -3,7 +3,6 @@
 Used whenever a code is necessary, for various implementations.
 
 """
-from fhir.resources.coding import Coding
 from open_ortho_terminology.terminology import Code
 
 PREFIX = "SCT"
